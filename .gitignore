@@ -1,0 +1,6 @@
+.pio
+output/
+.vscode/
+*.bin
+*.elf
+*.exe

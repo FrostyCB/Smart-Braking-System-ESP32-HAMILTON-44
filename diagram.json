@@ -1,0 +1,135 @@
+{
+  "version": 1,
+  "author": "Hamilton 44 Project",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-buzzer",
+      "id": "buzzer",
+      "top": 294.9,
+      "left": 1434.9,
+      "rotate": 90,
+      "attrs": {}
+    },
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp1",
+      "top": -1.14,
+      "left": 1024.1,
+      "rotate": 270,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": -195.2,
+      "left": 1349.6,
+      "attrs": { "pins": "i2c" }
+    },
+    {
+      "type": "wokwi-dht22",
+      "id": "weather_sensor1",
+      "top": 180.3,
+      "left": 802.8,
+      "rotate": 180,
+      "attrs": {}
+    },
+    { "type": "wokwi-servo", "id": "brake_servo1", "top": 180.4, "left": 1660.8, "attrs": {} },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn_isr1",
+      "top": -36,
+      "left": 883.4,
+      "rotate": 180,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_green1",
+      "top": 277.2,
+      "left": 1293,
+      "rotate": 90,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_red1",
+      "top": 344.4,
+      "left": 1283.4,
+      "rotate": 90,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic1",
+      "top": 43.5,
+      "left": 1556.1,
+      "rotate": 90,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-slide-potentiometer",
+      "id": "throttle1",
+      "top": 369.8,
+      "left": 1333.4,
+      "attrs": { "travelLength": "30" }
+    },
+    {
+      "type": "wokwi-servo",
+      "id": "servo1",
+      "top": 45.2,
+      "left": 636.4,
+      "rotate": 180,
+      "attrs": {}
+    },
+    { "type": "wokwi-hc-sr04", "id": "ultrasonic2", "top": -296.1, "left": 1003.9, "attrs": {} },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic3",
+      "top": 490.1,
+      "left": 986.1,
+      "rotate": 180,
+      "attrs": {}
+    }
+    
+  ],
+  "connections": [
+    [ "esp1:5V", "ultrasonic1:VCC", "red", [ "v8.31", "h374.4", "v-85.26" ] ],
+    [ "esp1:GND.1", "ultrasonic1:GND", "black", [ "v28.65", "h183.6" ] ],
+    [ "esp1:5", "ultrasonic1:TRIG", "green", [ "v-19.2", "h201.6" ] ],
+    [ "esp1:18", "ultrasonic1:ECHO", "blue", [ "v-28.8", "h489.6", "v68" ] ],
+    [ "esp1:5V", "lcd1:VCC", "red", [ "v19.05", "h124.8", "v-105.6" ] ],
+    [ "esp1:GND.1", "lcd1:GND", "black", [ "v38.25", "h192", "v-134.4" ] ],
+    [ "esp1:21", "lcd1:SDA", "violet", [ "v-48", "h201.6", "v67.2" ] ],
+    [ "esp1:22", "lcd1:SCL", "white", [ "v-38.4", "h211.2", "v67.2" ] ],
+    [ "esp1:GND.1", "brake_servo1:GND", "black", [ "v57.45" ] ],
+    [ "brake_servo1:V+", "esp1:5V", "red", [ "h-201.6", "v-47.9", "h-124.8" ] ],
+    [ "esp1:3V3", "weather_sensor1:VCC", "orange", [ "v38.25", "h-28.8" ] ],
+    [ "esp1:GND.1", "weather_sensor1:GND", "black", [ "v28.65", "h-172.8" ] ],
+    [ "esp1:14", "brake_servo1:PWM", "violet", [ "v0" ] ],
+    [ "esp1:4", "weather_sensor1:SDA", "gray", [ "v-9.6", "h86.4" ] ],
+    [ "throttle1:VCC", "esp1:3V3", "orange", [ "h0" ] ],
+    [ "esp1:34", "throttle1:SIG", "cyan", [ "v0" ] ],
+    [ "esp1:GND.1", "throttle1:GND", "black", [ "v134.25", "h407.6" ] ],
+    [ "btn_isr1:1.l", "esp1:19", "gold", [ "h124.8" ] ],
+    [ "btn_isr1:2.l", "esp1:GND.2", "black", [ "h0" ] ],
+    [ "esp1:GND.1", "buzzer:1", "black", [ "v0" ] ],
+    [ "esp1:27", "buzzer:2", "blue", [ "v0" ] ],
+    [ "esp1:25", "led_green1:A", "green", [ "v0" ] ],
+    [ "led_red1:A", "esp1:26", "white", [ "h0" ] ],
+    [ "esp1:GND.1", "led_green1:C", "black", [ "v0" ] ],
+    [ "esp1:GND.1", "led_red1:C", "black", [ "v201.45", "h-163.2" ] ],
+    [ "ultrasonic2:GND", "esp1:GND.2", "black", [ "v178.8", "h-102.2" ] ],
+    [ "esp1:5V", "ultrasonic2:VCC", "red", [ "v-0.15", "h38.4", "v-326.4", "h-139" ] ],
+    [ "esp1:GND.1", "ultrasonic3:GND", "black", [ "v316.65", "h-67.2" ] ],
+    [ "esp1:5V", "ultrasonic3:VCC", "red", [ "v335.85", "h-9.6" ] ],
+    [ "ultrasonic3:ECHO", "esp1:33", "purple", [ "v0" ] ],
+    [ "ultrasonic3:TRIG", "esp1:32", "blue", [ "v-86.4", "h-18.8" ] ],
+    [ "ultrasonic2:TRIG", "esp1:16", "orange", [ "v169.2", "h33" ] ],
+    [ "esp1:17", "ultrasonic2:ECHO", "#8f4814", [ "v0" ] ],
+    [ "servo1:GND", "esp1:GND.2", "black", [ "h153.6", "v-67.2", "h38.4" ] ],
+    [ "esp1:5V", "servo1:V+", "red", [ "v9.45", "h-316.8", "v-57.6" ] ],
+    [ "esp1:13", "servo1:PWM", "#8f4814", [ "v19.05", "h-259.2", "v-76.8", "h-67.2" ] ]
+  ],
+  "dependencies": {}
+}
