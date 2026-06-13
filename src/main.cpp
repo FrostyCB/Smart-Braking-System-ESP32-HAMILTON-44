@@ -53,7 +53,7 @@ void IRAM_ATTR emgISR() {
 
 // === BUZZER (LEDC-based, aman untuk ESP32Servo) ===
 void buzOn(int freq)  { ledcWriteTone(BUZ_CH, freq); }
-void buzOff()          { ledcWriteTone(BUZ_CH, 0); }
+void buzOff()         { ledcWriteTone(BUZ_CH, 0); }
 
 // === BACA ULTRASONIK ===
 int bacaSensor(int trig, int echo) {
