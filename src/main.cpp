@@ -189,6 +189,8 @@ void TaskUI(void *p) {
         lcd.print("%   ");
         xSemaphoreGive(xMutexLCD);
       }
+      Serial.print("[METRIK] Sisa RAM Task UI (Words): ");
+      Serial.println(uxTaskGetStackHighWaterMark(NULL));
     }
     vTaskDelay(pdMS_TO_TICKS(500));
   }
